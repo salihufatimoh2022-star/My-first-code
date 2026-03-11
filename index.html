@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .fact-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .fact-counter {
+            color: #667eea;
+            margin-top: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Fun Facts Generator</h1>
+        <div class="fact-box" id="fact">
+            Click the button to discover an amazing fact!
+        </div>
+        <button onclick="displayNewFact()">Get New Fact</button>
+        <div class="fact-counter">Fact <span id="counter">0</span> of <span id="total">0</span></div>
+    </div>
+
+    <script>
+        const facts = [
+            "Honey never spoils. Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible!",
+            "A day on Venus is longer than a year on Venus. Venus takes 243 Earth days to rotate once, but only 225 days to orbit the sun.",
+            "Octopuses have three hearts. Two pump blood to the gills, and one pumps blood to the rest of the body.",
+            "Bananas are berries, but strawberries aren't. Botanically speaking, bananas are berries and strawberries are aggregate fruits.",
+            "A group of flamingos is called a 'flamboyance.' How fabulous!",
+            "Cleopatra lived closer to the moon landing than to the building of the Great Pyramid.",
+            "Wombats have cube-shaped poop. Scientists believe this shape prevents the feces from rolling away.",
+            "There are more stars in the universe than grains of sand on all Earth's beaches.",
+            "Koalas have fingerprints that are nearly identical to human fingerprints.",
+            "The smell of rain (petrichor) is caused by a compound called geosmin, produced by bacteria in the soil.",
+            "Penguins have knees! They're hidden inside their bodies under their feathers.",
+            "A group of owls is called a 'parliament.'",
+            "Butterflies taste with their feet to find out whether the plant they sit on is good to lay eggs on.",
+            "The Eiffel Tower can be 15 cm (6 inches) taller during the summer due to heat expansion.",
+            "Dolphins have names for each other, and they call each other by name!",
+            "Polar bears are left-handed (or left-pawed).",
+            "A single bolt of lightning contains enough energy to toast 100,000 slices of bread.",
+            "Shrimp can see colors we can't even imagine.",
+            "The Great Wall of China is not visible from space without aid.",
+            "Puffins can hold multiple fish in their beaks at once, thanks to special ridges in their mouths."
+        ];
+
+        let currentFactIndex = 0;
+
+        function displayNewFact() {
+            currentFactIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('fact').textContent = facts[currentFactIndex];
+            document.getElementById('counter').textContent = currentFactIndex + 1;
+            document.getElementById('total').textContent = facts.length;
+        }
+
+        // Display the first fact on page load
+        window.addEventListener('load', () => {
+            displayNewFact();
+        });
+    </script>
+</body>
+</html>
